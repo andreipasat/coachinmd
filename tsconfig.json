@@ -1,0 +1,13 @@
+{
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext", // Enables support for dynamic imports
+    "target": "esnext", // Ensures compatibility with modern JavaScript features
+    "moduleResolution": "node", // Ensures correct resolution of modules
+    "strict": true, // Enables strict type checking (optional, but recommended)
+    "resolveJsonModule": true, // Allows importing JSON files directly
+    "esModuleInterop": true, // Ensures compatibility with CommonJS modules
+    "skipLibCheck": true // Skips type checking for dependencies
+  }
+}
