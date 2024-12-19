@@ -12,7 +12,9 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/i18n": "^9.1.1",
+    "@unhead/vue": "^1.11.14",
     "@vesp/nuxt-fontawesome": "^1.1.0",
     "@vueuse/head": "^2.0.0",
     "axios": "^1.7.9",

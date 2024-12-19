@@ -19,17 +19,25 @@
             <h2 class="text-3xl font-bold">{{ $t('landing_why_join_us') }}</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="flex flex-col items-center">
-                    <font-awesome-icon icon="fa-solid fa-hand-holding" class="h-16 w-16 " />
+                    <ClientOnly>
+                        <font-awesome-icon icon="hand-holding" class="h-16 w-16 " />
+                    </ClientOnly>
+
                     <h3 class="text-xl font-semibold mt-4">{{ $t('convenience') }}</h3>
                     <p class="mt-2 text-gray-600">{{ $t('easily_browse_and_book') }}</p>
                 </div>
                 <div class="flex flex-col items-center">
-                    <font-awesome-icon icon="fa-solid fa-shield-alt" class="h-16 w-16" />
+                    <ClientOnly>
+                        <font-awesome-icon icon="shield-alt" class="h-16 w-16" />
+                    </ClientOnly>
                     <h3 class="text-xl font-semibold mt-4">{{ $t('trustworthy_specialists') }}</h3>
                     <p class="mt-2 text-gray-600">{{ $t('verified_professionals') }}</p>
                 </div>
                 <div class="flex flex-col items-center">
-                    <font-awesome-icon icon="fa-solid fa-calendar-alt" class="h-16 w-16" />
+                    <ClientOnly>
+                        <font-awesome-icon icon="calendar-alt" class="h-16 w-16" />
+                    </ClientOnly>
+
                     <h3 class="text-xl font-semibold mt-4">{{ t('flexible_scheduling') }}</h3>
                     <p class="mt-2 text-gray-600">{{ $t('landing_sessions_availability') }}</p>
                 </div>
@@ -52,17 +60,23 @@
             <h2 class="text-3xl font-bold">{{ $t('how_it_works') }}</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="flex flex-col items-center">
-                    <font-awesome-icon icon="fa-solid fa-search" class="h-16 w-16" />
+                    <ClientOnly>
+                        <font-awesome-icon icon="search" class="h-16 w-16" />
+                    </ClientOnly>
                     <h3 class="text-xl font-semibold mt-4">{{ $t('find_specialists') }}</h3>
                     <p class="mt-2 text-gray-600">{{ $t('search_by_text') }}</p>
                 </div>
                 <div class="flex flex-col items-center">
-                    <font-awesome-icon icon="fa-solid fa-book" class="h-16 w-16" />
+                    <ClientOnly>
+                        <font-awesome-icon icon="book" class="h-16 w-16" />
+                    </ClientOnly>
                     <h3 class="text-xl font-semibold mt-4">{{ $t('book_sessions') }}</h3>
                     <p class="mt-2 text-gray-600">{{ $t('pick_a_time') }}</p>
                 </div>
                 <div class="flex flex-col items-center">
-                    <font-awesome-icon icon="fa-people-group" class="h-16 w-16" />
+                    <ClientOnly>
+                        <font-awesome-icon icon="people-group" class="h-16 w-16" />
+                    </ClientOnly>
                     <h3 class="text-xl font-semibold mt-4">{{ $t('connect') }}</h3>
                     <p class="mt-2 text-gray-600">{{ $t('enjoy_quality') }}</p>
                 </div>
