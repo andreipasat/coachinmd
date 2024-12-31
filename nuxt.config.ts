@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['nuxt-toastify', '@vesp/nuxt-fontawesome'],
+  modules: ['nuxt-toastify', '@vesp/nuxt-fontawesome', '@nuxtjs/sitemap'],
   toastify: {
     autoClose: 2000,
     position: 'top-right',
@@ -35,5 +35,13 @@ export default defineNuxtConfig({
       ],
     }
   },
-  pages: true
+  pages: true,
+  sitemap: {
+    hostname: process.env.APP_URL,
+    routes: [
+      '/',           // Landing page
+      '/privacy',    // Privacy page
+      '/terms'       // Terms page
+    ],
+  },
 })
