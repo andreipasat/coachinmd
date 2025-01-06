@@ -68,6 +68,7 @@ jobs:
       # Step 6: Build Project
       - name: Static HTML export with Nuxt
         run: ${{ steps.detect-package-manager.outputs.manager }} run generate
+        continue-on-error: false
 
       # Step 7: Deploy to DigitalOcean via SSH
       - name: Deploy to DigitalOcean
@@ -85,6 +86,6 @@ jobs:
             #list files
             ls -la
             # Upload new build
-            scp -r dist/* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt/
+            scp -r .output/public/* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt/
             # Reload or restart the app (e.g., with PM2 or Nginx)
             pm2 reload all || pm2 start npm --name "nuxt" -- start
