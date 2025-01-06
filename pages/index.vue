@@ -1,4 +1,36 @@
 <template>
+
+    <!-- How It Works Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold">{{ $t('how_it_works') }}</h2>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex flex-col items-center">
+                    <ClientOnly>
+                        <font-awesome-icon icon="search" class="h-16 w-16" />
+                    </ClientOnly>
+                    <h3 class="text-xl font-semibold mt-4">{{ $t('find_specialists') }}</h3>
+                    <p class="mt-2 text-gray-600">{{ $t('search_by_text') }}</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <ClientOnly>
+                        <font-awesome-icon icon="book" class="h-16 w-16" />
+                    </ClientOnly>
+                    <h3 class="text-xl font-semibold mt-4">{{ $t('book_sessions') }}</h3>
+                    <p class="mt-2 text-gray-600">{{ $t('pick_a_time') }}</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <ClientOnly>
+                        <font-awesome-icon icon="people-group" class="h-16 w-16" />
+                    </ClientOnly>
+                    <h3 class="text-xl font-semibold mt-4">{{ $t('connect') }}</h3>
+                    <p class="mt-2 text-gray-600">{{ $t('enjoy_quality') }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <header class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-16 ">
         <div class="container mx-auto px-6 text-center">
             <h1 class="text-4xl md:text-6xl font-bold">{{ $t('landing_find_trusted_specialists') }}</h1>
@@ -54,35 +86,6 @@
         </div>
     </section>
 
-  <!-- How It Works Section -->
-    <section class="py-16">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold">{{ $t('how_it_works') }}</h2>
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="flex flex-col items-center">
-                    <ClientOnly>
-                        <font-awesome-icon icon="search" class="h-16 w-16" />
-                    </ClientOnly>
-                    <h3 class="text-xl font-semibold mt-4">{{ $t('find_specialists') }}</h3>
-                    <p class="mt-2 text-gray-600">{{ $t('search_by_text') }}</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <ClientOnly>
-                        <font-awesome-icon icon="book" class="h-16 w-16" />
-                    </ClientOnly>
-                    <h3 class="text-xl font-semibold mt-4">{{ $t('book_sessions') }}</h3>
-                    <p class="mt-2 text-gray-600">{{ $t('pick_a_time') }}</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <ClientOnly>
-                        <font-awesome-icon icon="people-group" class="h-16 w-16" />
-                    </ClientOnly>
-                    <h3 class="text-xl font-semibold mt-4">{{ $t('connect') }}</h3>
-                    <p class="mt-2 text-gray-600">{{ $t('enjoy_quality') }}</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
   <!--Contact section-->
     <section class="bg-gray-200 py-16" id="contact">

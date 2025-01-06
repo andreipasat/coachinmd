@@ -1,5 +1,10 @@
 <template>
-    <div class="prose mx-auto p-6" v-html="t('terms_html', {insertDate: new Date().toLocaleDateString(), appName: process.env.APP_NAME, contactEmail: process.env.CONTACT_EMAIL, businessAddress: process.env.BUISSNES_ADDRESS })">
+    <div class="prose mx-auto p-6" v-html="t('terms_html', {
+        insertDate: new Date().toLocaleDateString(),
+        appName: 'COACHINMD',
+        contactEmail: 'contact@coachinmd.com',
+        businessAddress: 'Chișinău, Moldova'
+    })">
     </div>
 </template>
 

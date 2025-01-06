@@ -37,7 +37,7 @@ export default defineNuxtConfig({
   },
   pages: true,
   sitemap: {
-    hostname: process.env.APP_URL,
+    hostname: 'coachinmd.com',
     routes: [
       '/',           // Landing page
       '/privacy',    // Privacy page

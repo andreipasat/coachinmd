@@ -82,6 +82,8 @@ jobs:
             mkdir -p /var/www/nuxt
             # Remove old build
             rm -rf /var/www/nuxt/*
+            #list files
+            ls -la
             # Upload new build
             scp -r dist/* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt/
             # Reload or restart the app (e.g., with PM2 or Nginx)
