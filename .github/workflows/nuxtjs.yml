@@ -72,8 +72,15 @@ jobs:
 
       - name: List workspace content
         run: ls -la
+      - name: Add SSH Key
+        run: |
+         mkdir -p ~/.ssh
+         echo "${{ secrets.DROPLET_SSH_KEY }}" > ~/.ssh/id_rsa
+         chmod 600 ~/.ssh/id_rsa
+         ssh-keyscan -H ${{ secrets.DROPLET_IP }} >> ~/.ssh/known_hosts
+    
 
-      # Step 7: Deploy to DigitalOcean via SSH
+    # Step 7: Deploy to DigitalOcean via SSH
       - name: Deploy to DigitalOcean
         uses: appleboy/ssh-action@v0.1.6
         with:
@@ -89,6 +96,9 @@ jobs:
             #list files
             ls -la
             # Upload new build
-            scp -r .output/public/* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt/
-            # Reload or restart the app (e.g., with PM2 or Nginx)
-            pm2 reload all || pm2 start npm --name "nuxt" -- start
+#            scp -r .output/public/* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt/
+#            # Reload or restart the app (e.g., with PM2 or Nginx)
+#            pm2 reload all || pm2 start npm --name "nuxt" -- start
+
+      - name: Copy files to DigitalOcean
+        run: scp -r .output/public/* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt/
