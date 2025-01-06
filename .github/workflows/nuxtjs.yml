@@ -102,3 +102,6 @@ jobs:
 
       - name: Copy files to DigitalOcean
         run: scp -r .output/public/* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt/
+
+      - name: Restart Nuxt App
+        run: ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "pm2 reload all || pm2 start npm --name 'nuxt' -- start"
