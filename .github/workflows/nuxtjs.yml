@@ -105,3 +105,6 @@ jobs:
 
       - name: Restart Nuxt App
         run: ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "pm2 reload all || pm2 start npm --name 'nuxt' -- start --cwd /var/www/nuxt"
+
+      - name: Verify Nuxt App Status
+        run: ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "pm2 show nuxt"
