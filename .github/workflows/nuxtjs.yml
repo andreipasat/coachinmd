@@ -1,110 +1,33 @@
-name: Deploy Nuxt site to DigitalOcean
+name: Deploy Nuxt App to DigitalOcean
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Permissions setup (you don't need Pages permissions for DigitalOcean)
-permissions:
-  contents: read
-
-# Allow only one concurrent deployment
-concurrency:
-  group: "digitalocean"
-  cancel-in-progress: false
+    branches:
+      - main
 
 jobs:
-  # Build and Deploy job
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       # Step 1: Checkout Code
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Detect Package Manager
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
-
-      # Step 3: Setup Node.js
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-
-      # Step 4: Restore Build Cache (Optional)
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            dist
-            .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
-          restore-keys: |
-            ${{ runner.os }}-nuxt-build-
-
-      # Step 5: Install Dependencies
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-
-      # Step 6: Build Project
-      - name: Static HTML export with Nuxt
-        run: ${{ steps.detect-package-manager.outputs.manager }} run generate
-        continue-on-error: false
-
-      - name: List workspace content
-        run: ls -la
+      # Step 2: Add SSH Key (if not already present)
       - name: Add SSH Key
         run: |
-         mkdir -p ~/.ssh
-         echo "${{ secrets.DROPLET_SSH_KEY }}" > ~/.ssh/id_rsa
-         chmod 600 ~/.ssh/id_rsa
-         ssh-keyscan -H ${{ secrets.DROPLET_IP }} >> ~/.ssh/known_hosts
-    
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DROPLET_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.DROPLET_IP }} >> ~/.ssh/known_hosts
 
-    # Step 7: Deploy to DigitalOcean via SSH
+      # Step 3: Deploy Docker to DigitalOcean
       - name: Deploy to DigitalOcean
-        uses: appleboy/ssh-action@v0.1.6
-        with:
-          host: ${{ secrets.DROPLET_IP }}
-          username: ${{ secrets.DROPLET_USER }}
-          key: ${{ secrets.DROPLET_SSH_KEY }}
-          port: 22
-          script: |
-            # Ensure deployment directory exists
-            mkdir -p /var/www/nuxt
-            # Remove old build
-            rm -rf /var/www/nuxt/*
-            #list files
-            ls -la
-            # Upload new build
-#            scp -r .output/public/* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt/
-#            # Reload or restart the app (e.g., with PM2 or Nginx)
-#            pm2 reload all || pm2 start npm --name "nuxt" -- start
-
-      - name: Copy files to DigitalOcean
-        run: scp -r .output/public/* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt/
-
-      - name: Restart Nuxt App
-        run: ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "pm2 reload all || pm2 start npm --name 'nuxt' -- start --cwd /var/www/nuxt"
-
-      - name: Verify Nuxt App Status
-        run: ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "pm2 show nuxt"
+        run: |
+          scp -r ./* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt
+          ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "
+            cd /var/www/nuxt &&
+            docker-compose down &&
+            docker-compose up -d --build
+          "
