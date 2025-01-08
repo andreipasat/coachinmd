@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm ci && npm run postinstall || (echo "Nuxt prepare failed" && cat /app/npm-debug.log)
 
 # Apply permissions to the working directory
 RUN chmod -R 777 /app

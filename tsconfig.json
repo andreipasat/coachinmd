@@ -9,5 +9,6 @@
     "resolveJsonModule": true, // Allows importing JSON files directly
     "esModuleInterop": true, // Ensures compatibility with CommonJS modules
     "skipLibCheck": true // Skips type checking for dependencies
+    "types": ["@nuxt/types"]
   }
 }
