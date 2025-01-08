@@ -104,4 +104,4 @@ jobs:
         run: scp -r .output/public/* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt/
 
       - name: Restart Nuxt App
-        run: ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "pm2 reload all || pm2 start npm --name 'nuxt' -- start"
+        run: ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "pm2 reload all || pm2 start npm --name 'nuxt' -- start --cwd /var/www/nuxt"
