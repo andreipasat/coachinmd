@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy only package.json and lock files for caching
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci && npm run postinstall || (echo "Nuxt prepare failed" && cat /app/npm-debug.log)
+# Clean cache and install dependencies
+RUN rm -rf node_modules && npm cache clean --force && npm ci
 
 # Apply permissions to the working directory
 RUN chmod -R 777 /app
@@ -16,7 +16,10 @@ RUN chmod -R 777 /app
 # Copy the rest of the application files
 COPY . .
 
-# Build the Nuxt application
+# Run the Nuxt prepare step (explicitly)
+RUN npx nuxt prepare || (echo "Nuxt prepare failed" && cat /app/npm-debug.log)
+
+# Build the Nuxt application (static site generation)
 RUN npm run generate
 
 # Stage 2: Serve with NGINX

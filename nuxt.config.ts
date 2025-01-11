@@ -2,9 +2,13 @@
 export default defineNuxtConfig({
   site: { url: 'coachinmd.com' },
   compatibilityDate: '2024-11-01',
+  ssr: true,
+  target: 'static',
+  build: {
+    transpile: [],
+  },
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
-
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -14,7 +18,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      baseURL: process.env.API_BASE_URL || 'http://localhost:3000', // Default value
+      baseURL: 'coachinmd.com' || 'http://localhost:3000', // Default value
     },
   },
 
