@@ -1,84 +1,52 @@
 <template>
 
-    <!-- How It Works Section -->
-    <section class="py-16">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold">{{ $t('how_it_works') }}</h2>
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="flex flex-col items-center">
-                    <ClientOnly>
-                        <font-awesome-icon icon="search" class="h-16 w-16" />
-                    </ClientOnly>
-                    <h3 class="text-xl font-semibold mt-4">{{ $t('find_specialists') }}</h3>
-                    <p class="mt-2 text-gray-600">{{ $t('search_by_text') }}</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <ClientOnly>
-                        <font-awesome-icon icon="book" class="h-16 w-16" />
-                    </ClientOnly>
-                    <h3 class="text-xl font-semibold mt-4">{{ $t('book_sessions') }}</h3>
-                    <p class="mt-2 text-gray-600">{{ $t('pick_a_time') }}</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <ClientOnly>
-                        <font-awesome-icon icon="people-group" class="h-16 w-16" />
-                    </ClientOnly>
-                    <h3 class="text-xl font-semibold mt-4">{{ $t('connect') }}</h3>
-                    <p class="mt-2 text-gray-600">{{ $t('enjoy_quality') }}</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <header class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-16 ">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold">{{ $t('landing_find_trusted_specialists') }}</h1>
-            <p class="mt-4 text-lg">{{ $t('landing_subscribe_easy') }}</p>
+    <header class="bg-gradient-to-r from-vanilla-dark via-vanilla to-vanilla-light py-16">
+        <div class="container mx-auto px-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-chocolate-milk to-chocolate-dark ">
+            <h1 class="text-4xl md:text-4xl font-bold">{{ $t('landing_find_trusted_specialists') }}</h1>
+            <p class="mt-4 text-lg font-sans">{{ $t('landing_subscribe_easy') }}</p>
             <div class="mt-6">
-                <input v-model="email" type="email" :placeholder="t('your_email')" class="px-4 py-2 rounded-l-md text-gray-800 focus:outline-none">
+                <input v-model="email" type="email" :placeholder="t('your_email')" class="px-4 py-2 rounded-l-md focus:outline-none">
                 <input type="text" v-model="honeypot" class="hidden" autocomplete="off">
-                <button @click="handleSubscribe" class="bg-white text-blue-600 px-4 py-2 rounded-r-md font-bold hover:bg-gray-100">
+                <button @click="handleSubscribe" class="bg-vanilla-orange hover:bg-vanilla-dark text-chocolate-dark px-4 py-2 rounded-r-md font-bold">
                     {{ $t('subscribe') }}
                 </button>
             </div>
         </div>
     </header>
 
-  <!-- Value Proposition Section -->
-    <section class="py-16">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold">{{ $t('landing_why_join_us') }}</h2>
+    <!-- How It Works Section -->
+    <section class="py-16 bg-gradient-to-r from-vanilla-light to-white">
+        <div class="container mx-auto px-6 text-center text-chocolate-dark">
+            <h2 class="text-3xl font-bold">{{ $t('how_it_works') }}</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center transform transition duration-300 ease-in-out hover:scale-105">
                     <ClientOnly>
-                        <font-awesome-icon icon="hand-holding" class="h-16 w-16 " />
+                        <font-awesome-icon icon="search" class="h-16 w-16" />
                     </ClientOnly>
-
-                    <h3 class="text-xl font-semibold mt-4">{{ $t('convenience') }}</h3>
-                    <p class="mt-2 text-gray-600">{{ $t('easily_browse_and_book') }}</p>
+                    <h3 class="text-xl font-semibold mt-4">{{ $t('find_specialists') }}</h3>
+                    <p class="mt-2">{{ $t('search_by_text') }}</p>
                 </div>
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center transform transition duration-300 ease-in-out hover:scale-105">
                     <ClientOnly>
-                        <font-awesome-icon icon="shield-alt" class="h-16 w-16" />
+                        <font-awesome-icon icon="book" class="h-16 w-16" />
                     </ClientOnly>
-                    <h3 class="text-xl font-semibold mt-4">{{ $t('trustworthy_specialists') }}</h3>
-                    <p class="mt-2 text-gray-600">{{ $t('verified_professionals') }}</p>
+                    <h3 class="text-xl font-semibold mt-4">{{ $t('book_sessions') }}</h3>
+                    <p class="mt-2">{{ $t('pick_a_time') }}</p>
                 </div>
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center transform transition duration-300 ease-in-out hover:scale-105">
                     <ClientOnly>
-                        <font-awesome-icon icon="calendar-alt" class="h-16 w-16" />
+                        <font-awesome-icon icon="people-group" class="h-16 w-16" />
                     </ClientOnly>
-
-                    <h3 class="text-xl font-semibold mt-4">{{ t('flexible_scheduling') }}</h3>
-                    <p class="mt-2 text-gray-600">{{ $t('landing_sessions_availability') }}</p>
+                    <h3 class="text-xl font-semibold mt-4">{{ $t('connect') }}</h3>
+                    <p class="mt-2">{{ $t('enjoy_quality') }}</p>
                 </div>
             </div>
         </div>
     </section>
 
+
   <!-- Teaser/Countdown Section -->
-    <section class="bg-blue-600 text-white py-16">
+    <section class="py-16 bg-gradient-to-r from-vanilla-dark via-vanilla to-vanilla-light">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold">{{ $t('we_launching_soon') }}</h2>
             <p class="mt-4">{{ $t('dont_miss_out') }}</p>
@@ -86,34 +54,77 @@
         </div>
     </section>
 
+    <!-- Value Proposition Section -->
+    <section class="py-16 text-chocolate-dark bg-gradient-to-r from-vanilla-light to-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold">{{ $t('landing_why_join_us') }}</h2>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex flex-col items-center transform transition duration-300 ease-in-out hover:scale-105">
+                    <ClientOnly>
+                        <font-awesome-icon icon="hand-holding" class="h-16 w-16 " />
+                    </ClientOnly>
+
+                    <h3 class="text-xl font-semibold mt-4">{{ $t('convenience') }}</h3>
+                    <p class="mt-2">{{ $t('easily_browse_and_book') }}</p>
+                </div>
+                <div class="flex flex-col items-center transform transition duration-300 ease-in-out hover:scale-105">
+                    <ClientOnly>
+                        <font-awesome-icon icon="shield-alt" class="h-16 w-16" />
+                    </ClientOnly>
+                    <h3 class="text-xl font-semibold mt-4">{{ $t('trustworthy_specialists') }}</h3>
+                    <p class="mt-2">{{ $t('verified_professionals') }}</p>
+                </div>
+                <div class="flex flex-col items-center transform transition duration-300 ease-in-out hover:scale-105">
+                    <ClientOnly>
+                        <font-awesome-icon icon="calendar-alt" class="h-16 w-16" />
+                    </ClientOnly>
+
+                    <h3 class="text-xl font-semibold mt-4">{{ t('flexible_scheduling') }}</h3>
+                    <p class="mt-2">{{ $t('landing_sessions_availability') }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
   <!--Contact section-->
-    <section class="bg-gray-200 py-16" id="contact">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">{{ $t('contact_us') }}</h2>
-            <p class="text-center text-gray-600 mb-12">{{ $t('have_questions') }}</p>
+    <section class="relative w-full h-screen overflow-hidden py-16 bg-gradient-to-b from-vanilla-dark via-vanilla to-vanilla-light text-chocolate-dark" id="contact">
+<!--        <video-->
+<!--            autoplay-->
+<!--            muted-->
+<!--            loop-->
+<!--            class="absolute top-0 left-0 w-full h-full object-cover"-->
+<!--        >-->
+<!--            <source :src="videoPath" type="video/mp4" />-->
+<!--            Your browser does not support the video tag.-->
+<!--        </video>-->
 
-            <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-8">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">{{ $t('contact_us') }}</h2>
+            <p class="text-center mb-12">{{ $t('have_questions') }}</p>
+
+            <div class="max-w-2xl mx-auto p-8">
                 <form @submit.prevent="handleContact" action="#" method="POST">
                     <input type="text" v-model="honeypot" class="hidden" autocomplete="off">
                     <div class="mb-6">
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-2">{{ $t('your_name') }}</label>
-                        <input v-model="nameContact" type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <input v-model="nameContact" type="text" id="name" name="name" required class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none">
                     </div>
 
                     <div class="mb-6">
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-2">{{ $t('your_email') }}</label>
-                        <input v-model="emailContact" type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <input v-model="emailContact" type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none">
                     </div>
 
                     <div class="mb-6">
                         <label for="message" class="block text-sm font-medium text-gray-700 mb-2">{{ $t('your_message') }}</label>
-                        <textarea v-model="message" id="message" name="message" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        <textarea v-model="message" id="message" name="message" rows="5" required class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none"></textarea>
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="w-full md:w-auto bg-blue-600 text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                            {{ $t('send_message') }}</button>
+                        <button type="submit" class="w-full md:w-auto bg-vanilla-orange hover:bg-vanilla-dark text-chocolate-dark px-6 py-2 rounded-md shadow-md focus:ring-2 focus:ring-offset-2">
+                            {{ $t('send_message') }}
+                        </button>
                     </div>
                 </form>
             </div>
@@ -121,13 +132,13 @@
     </section>
 
   <!-- Footer Section -->
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="text-chocolate-dark py-4 text-sm">
         <div class="container mx-auto px-6 text-center">
             <p>© 2024 COACHINMD.COM. {{ $t('all_rights_reserved') }}</p>
-            <div class="mt-4 flex justify-center space-x-4">
-                <a href="/privacy" class="hover:text-gray-400">{{ $t('privacy_policy') }}</a>
-                <a href="/terms" class="hover:text-gray-400">{{ $t('terms_of_service') }}</a>
-                <a href="#contact" class="hover:text-gray-400">{{ $t('contact_us') }}</a>
+            <div class="mt-2 flex justify-center space-x-4">
+                <a href="/privacy" class="hover:text-chocolate-milk">{{ $t('privacy_policy') }}</a>
+                <a href="/terms" class="hover:text-chocolate-milk">{{ $t('terms_of_service') }}</a>
+                <a href="#contact" class="hover:text-chocolate-milk">{{ $t('contact_us') }}</a>
             </div>
         </div>
     </footer>
@@ -136,6 +147,8 @@
 
 import { useI18n } from 'vue-i18n';
 const { t, locale } = useI18n();
+import videoFile from '@/assets/bgvideo.mp4';
+const videoPath = ref(videoFile)
 
 import { useHead } from '@vueuse/head';
 

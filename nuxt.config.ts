@@ -1,13 +1,26 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Lato:wght@300;400;700&subset=latin,cyrillic&display=swap',
+        },
+      ],
+    },
+  },
   site: { url: 'coachinmd.com' },
   compatibilityDate: '2024-04-03',
   ssr: true,
-  target: 'static',
-  build: {
-    transpile: [],
+  nitro: {
+    preset: 'node', // Ensure server is set correctly
   },
-  devtools: { enabled: true },
+  target: 'static',
+  // build: {
+  //   transpile: [],
+  // },
+  // devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   postcss: {
     plugins: {
@@ -22,7 +35,12 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['nuxt-toastify', '@vesp/nuxt-fontawesome', '@nuxtjs/sitemap'],
+  modules: [
+      'nuxt-toastify',
+    '@vesp/nuxt-fontawesome',
+    '@nuxtjs/sitemap',
+      '@nuxtjs/google-fonts'
+  ],
   toastify: {
     autoClose: 2000,
     position: 'top-right',
@@ -39,6 +57,20 @@ export default defineNuxtConfig({
         'people-group'
       ],
     }
+  },
+  googleFonts: {
+    families: {
+      'Playfair+Display': {
+        wght: [400, 500, 700], // Weights for Playfair Display
+      },
+      Lato: {
+        wght: [300, 400, 700], // Weights for Lato
+      },
+    },
+    display: 'swap', // Use swap display for better performance
+    prefetch: true, // Optional: Enable prefetching of fonts
+    preload: true, // Optional: Preload fonts for faster loading
+    download: true, // Optional: Self-host fonts
   },
   pages: true,
   sitemap: {
