@@ -1,4 +1,4 @@
-name: Deploy Nuxt App with Docker
+name: Deploy Nuxt App without Docker
 
 on:
   push:
@@ -26,19 +26,22 @@ jobs:
       - name: Copy files to server
         run: scp -r ./* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt
 
-      # Step 4: Install Dependencies and Build on Server
+      # Step 4: Install Dependencies and Build
       - name: Install dependencies and build
         run: |
-         ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "
-           cd /var/www/nuxt &&
-           npm install &&
-           npx nuxt prepare &&
-           npm run generate
-         "
+          ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "
+            cd /var/www/nuxt &&
+            curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&
+            sudo apt install -y nodejs &&
+            retry() { for i in {1..5}; do \"$@\" && break || sleep 10; done; } &&
+            retry npm ci --verbose &&
+            npx nuxt prepare &&
+            npm run generate
+          "
 
-      # Step 5: Start or Restart Nuxt App with PM2
+      # Step 5: Start or Restart Nuxt App
       - name: Start or Restart Nuxt App
         run: |
-         ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "
-           pm2 describe nuxt > /dev/null && pm2 reload nuxt || pm2 start npm --name 'nuxt' -- start
-         "
+          ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "
+            pm2 describe nuxt > /dev/null && pm2 reload nuxt || pm2 start npm --name 'nuxt' -- start
+          "
