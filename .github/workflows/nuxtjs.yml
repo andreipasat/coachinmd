@@ -31,7 +31,7 @@ jobs:
         run: |
          ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "
            cd /var/www/nuxt &&
-           npm ci &&
+           npm install &&
            npx nuxt prepare &&
            npm run generate
          "
