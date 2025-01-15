@@ -17,7 +17,7 @@ RUN chmod -R 777 /app
 COPY . .
 
 # Run the Nuxt prepare step (explicitly)
-RUN npx nuxt prepare || (echo "Nuxt prepare failed" && cat /app/npm-debug.log)
+RUN npx nuxt prepare --verbose || (echo "Nuxt prepare failed" && cat /app/npm-debug.log)
 
 # Build the Nuxt application (static site generation)
 RUN npm run generate
