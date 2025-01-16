@@ -10,6 +10,7 @@ export default defineNuxtConfig({
       ],
     },
   },
+  telemetry: false,
   site: { url: 'coachinmd.com' },
   compatibilityDate: '2024-04-03',
   ssr: true,
@@ -17,9 +18,9 @@ export default defineNuxtConfig({
     preset: 'node', // Ensure server is set correctly
   },
   target: 'static',
-  // build: {
-  //   transpile: [],
-  // },
+  build: {
+    transpile: [],
+  },
   devtools: { enabled: false },
   css: ['~/assets/css/main.css'],
   postcss: {
