@@ -172,8 +172,6 @@
 
 import { useI18n } from 'vue-i18n';
 const { t, locale } = useI18n();
-import videoFile from '@/assets/bgvideo.mp4';
-const videoPath = ref(videoFile)
 
 import { useHead } from '@vueuse/head';
 
