@@ -11,7 +11,7 @@
                 <div class="md:w-1/2">
                     <div class="grid grid-cols-3 gap-4">
                         <div class="col-span-2 bg-white h-[140px] rounded-bl-full rounded-tr-full">
-                            <img :src="musicians" class="w-full h-full object-cover rounded-bl-full rounded-tr-full" alt="" />
+<!--                            <img :src="musicians" class="w-full h-full object-cover rounded-bl-full rounded-tr-full" alt="" />-->
                         </div>
                         <div class="bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-tl-full">02</div>
                         <div class="bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-br-full">03</div>
