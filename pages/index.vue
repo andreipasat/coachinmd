@@ -175,7 +175,7 @@ const { t, locale } = useI18n();
 
 import { useHead } from '@vueuse/head';
 
-import musicians from '~/assets/musicians.jpg'
+// import musicians from '~/assets/musicians.jpg'
 
 useHead({
     title: t('find_trusted_specialists') + ' | ' + process.env.APP_NAME,
