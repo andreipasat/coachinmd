@@ -2,14 +2,25 @@
 
     <header class="bg-gradient-to-r from-vanilla-dark via-vanilla to-vanilla-light py-16">
         <div class="container mx-auto px-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-chocolate-milk to-chocolate-dark ">
-            <h1 class="text-4xl md:text-4xl font-bold">{{ $t('landing_find_trusted_specialists') }}</h1>
-            <p class="mt-4 text-lg font-sans">{{ $t('landing_subscribe_easy') }}</p>
-            <div class="mt-6">
-                <input v-model="email" type="email" :placeholder="t('your_email')" class="px-4 py-2 rounded-l-md focus:outline-none">
-                <input type="text" v-model="honeypot" class="hidden" autocomplete="off">
-                <button @click="handleSubscribe" class="bg-vanilla-orange hover:bg-vanilla-dark text-chocolate-dark px-4 py-2 rounded-r-md font-bold">
-                    {{ $t('subscribe') }}
-                </button>
+            <div class="flex-row md:flex md:justify-between space-y-5 md:space-y-0">
+                <div class="md:w-1/2 text-left space-y-10">
+                    <button class="w-full md:w-auto rounded-full p-2 border border-chocolate-dark">Achieve Your Goals</button>
+                    <h1 class="text-2xl text-center md:text-left md:text-6xl">Unlock Your Full Potential</h1>
+                    <button class="w-full md:w-auto rounded-full p-2 border border-chocolate-dark">Book Now</button>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="col-span-2 bg-white h-[140px] rounded-bl-full rounded-tr-full">
+                            <img :src="musicians" class="w-full h-full object-cover rounded-bl-full rounded-tr-full" alt="" />
+                        </div>
+                        <div class="bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-tl-full">02</div>
+                        <div class="bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-br-full">03</div>
+                        <div class="bg-white h-[140px]">04</div>
+                        <div class="bg-white h-[140px] rounded-bl-full">05</div>
+                        <div class="bg-white h-[140px] rounded-full">06</div>
+                        <div class="col-span-2 bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-tl-full">07</div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -40,6 +51,20 @@
                     <h3 class="text-xl font-semibold mt-4">{{ $t('connect') }}</h3>
                     <p class="mt-2">{{ $t('enjoy_quality') }}</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gradient-to-r from-vanilla-dark via-vanilla to-vanilla-light py-16">
+        <div class="container mx-auto px-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-chocolate-milk to-chocolate-dark ">
+            <h1 class="text-4xl md:text-4xl font-bold">{{ $t('landing_find_trusted_specialists') }}</h1>
+            <p class="mt-4 text-lg font-sans">{{ $t('landing_subscribe_easy') }}</p>
+            <div class="mt-6">
+                <input v-model="email" type="email" :placeholder="t('your_email')" class="px-4 py-2 rounded-l-md focus:outline-none">
+                <input type="text" v-model="honeypot" class="hidden" autocomplete="off">
+                <button @click="handleSubscribe" class="bg-vanilla-orange hover:bg-vanilla-dark text-chocolate-dark px-4 py-2 rounded-r-md font-bold">
+                    {{ $t('subscribe') }}
+                </button>
             </div>
         </div>
     </section>
@@ -151,6 +176,8 @@ import videoFile from '@/assets/bgvideo.mp4';
 const videoPath = ref(videoFile)
 
 import { useHead } from '@vueuse/head';
+
+import musicians from '~/assets/musicians.jpg'
 
 useHead({
     title: t('find_trusted_specialists') + ' | ' + process.env.APP_NAME,

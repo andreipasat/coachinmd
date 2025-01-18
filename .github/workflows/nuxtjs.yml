@@ -14,7 +14,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Add SSH Key
+      # Step 2: Install Dependencies and Build
+      - name: Install dependencies and build
+        run: |
+          curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+          sudo apt install -y nodejs
+          npm ci
+          npx nuxt prepare
+          npm run build
+
+      # Step 3: Archive Build Folder
+      - name: Archive .output folder
+        run: tar -czf nuxt-output.tar.gz .output
+
+      # Step 4: Add SSH Key
       - name: Add SSH Key
         run: |
           mkdir -p ~/.ssh
@@ -22,26 +35,18 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.DROPLET_IP }} >> ~/.ssh/known_hosts
 
-      # Step 3: Copy Project to DigitalOcean
-      - name: Copy files to server
-        run: scp -r ./* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt
+      # Step 5: Copy Build Archive to Server
+      - name: Copy archive to server
+        run: scp nuxt-output.tar.gz ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt
 
-      # Step 4: Install Dependencies and Build
-      - name: Install dependencies and build
+      # Step 6: Extract Build and Restart App on Server
+      - name: Extract and restart app on server
         run: |
           ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "
             cd /var/www/nuxt &&
-            curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&
-            sudo apt install -y nodejs &&
-            retry() { for i in {1..5}; do \"$@\" && break || sleep 10; done; } &&
-            retry npm ci --verbose &&
-            npx nuxt prepare &&
-            npm run generate
-          "
-
-      # Step 5: Start or Restart Nuxt App
-      - name: Start or Restart Nuxt App
-        run: |
-          ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "
-            pm2 describe nuxt > /dev/null && pm2 reload nuxt || pm2 start npm --name 'nuxt' -- start
+            tar -xzf nuxt-output.tar.gz &&
+            rm -rf /var/www/nuxt-output &&
+            mv .output /var/www/nuxt-output &&
+            rm nuxt-output.tar.gz &&
+            pm2 describe nuxt > /dev/null && pm2 reload nuxt || pm2 start /var/www/nuxt-output/server/index.mjs --name 'nuxt'
           "
