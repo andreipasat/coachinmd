@@ -37,16 +37,16 @@ jobs:
 
       # Step 5: Copy Build Archive to Server
       - name: Copy archive to server
-        run: scp nuxt-output.tar.gz ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt
+        run: scp nuxt-output.tar.gz ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/home/${{ secrets.DROPLET_USER }}/
 
       # Step 6: Extract Build and Restart App on Server
       - name: Extract and restart app on server
         run: |
           ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "
-            cd /var/www/nuxt &&
+            cd /home &&
             tar -xzf nuxt-output.tar.gz &&
-            rm -rf /var/www/nuxt-output &&
-            mv .output /var/www/nuxt-output &&
+            rm -rf /home/nuxt-output &&
+            mv .output /home/nuxt-output &&
             rm nuxt-output.tar.gz &&
-            pm2 describe nuxt > /dev/null && pm2 reload nuxt || pm2 start /var/www/nuxt-output/server/index.mjs --name 'nuxt'
+            pm2 describe nuxt > /dev/null && pm2 reload nuxt || pm2 start /home/nuxt-output/server/index.mjs --name 'nuxt'
           "
