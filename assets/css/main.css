@@ -8,7 +8,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "Limelight", serif; /* Elegant headings */
-    color: #4E2A00; /* Dark chocolate for headings */
+    color: black; /* Dark chocolate for headings */
 }
 
 p {

@@ -1,34 +1,51 @@
 <template>
 
-    <header class="bg-gradient-to-r from-vanilla-dark via-vanilla to-vanilla-light py-16">
-        <div class="container mx-auto px-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-chocolate-milk to-chocolate-dark ">
+    <header class="bg-gradient-to-r from-oldPaper to-condo py-16 text-black">
+        <div class="container mx-auto px-6 text-center ">
             <div class="flex-row md:flex md:justify-between space-y-5 md:space-y-0">
                 <div class="md:w-1/2 text-left space-y-10">
-                    <button class="w-full md:w-auto rounded-full p-2 border border-chocolate-dark">Achieve Your Goals</button>
-                    <h1 class="text-2xl text-center md:text-left md:text-6xl">Unlock Your Full Potential</h1>
-                    <button class="w-full md:w-auto rounded-full p-2 border border-chocolate-dark">Book Now</button>
+                    <button class="w-full md:w-auto rounded-full p-2 border border-black">Achieve Your Goals</button>
+                    <h1 class="text-6xl text-center md:text-left md:text-8xl">
+                        Unlock <br> <span class="md:text-6xl">Your </span> <span class="text-red">TALENT</span>
+                    </h1>
+                    <h1 class="text-2xl text-center md:text-left">and show the world your abilities!</h1>
+                    <button class="w-full md:w-auto rounded-full p-2 border border-black">Book Now</button>
                 </div>
                 <div class="md:w-1/2">
                     <div class="grid grid-cols-3 gap-4">
-                        <div class="col-span-2 bg-white h-[140px] rounded-bl-full rounded-tr-full">
-<!--                            <img :src="musicians" class="w-full h-full object-cover rounded-bl-full rounded-tr-full" alt="" />-->
+                        <div class="col-span-2 bg-white h-[140px] rounded-bl-full rounded-tr-full border border-white">
+                            <img :src="musicians" class="w-full h-full object-cover rounded-bl-full rounded-tr-full grayscale" alt="" />
                         </div>
-                        <div class="bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-tl-full">02</div>
-                        <div class="bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-br-full">03</div>
-                        <div class="bg-white h-[140px]">04</div>
-                        <div class="bg-white h-[140px] rounded-bl-full">05</div>
-                        <div class="bg-white h-[140px] rounded-full">06</div>
-                        <div class="col-span-2 bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-tl-full">07</div>
+                        <div class="bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-tl-full border border-white">
+                            <img :src="chess" class="w-full h-full object-cover rounded-bl-full rounded-tr-full rounded-tl-full grayscale" alt="" />
+                        </div>
+                        <div class="bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-br-full border border-white">
+                            <img :src="trainer" class="w-full h-full object-cover rounded-bl-full rounded-tr-full rounded-br-full grayscale" alt="" />
+                        </div>
+                        <div class="bg-white h-[140px] border border-white">
+                            <img :src="yoga" class="w-full h-full object-cover grayscale" alt="" />
+                        </div>
+                        <div class="bg-white h-[140px] rounded-bl-full border border-white">
+                            <img :src="psychologist" class="w-full h-full object-cover rounded-bl-full grayscale" alt="" />
+                        </div>
+                        <div class="bg-white h-[140px] rounded-full border border-white">
+                            <img :src="beauty" class="w-full h-full object-cover rounded-full grayscale" alt="" />
+                        </div>
+                        <div class="col-span-2 bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-tl-full border border-white">
+                            <img :src="teacher" class="w-full h-full object-cover rounded-full grayscale" alt="" />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
+    <section class="bg-black py-2"></section>
+
     <!-- How It Works Section -->
     <section class="py-16 bg-gradient-to-r from-vanilla-light to-white">
-        <div class="container mx-auto px-6 text-center text-chocolate-dark">
-            <h2 class="text-3xl font-bold">{{ $t('how_it_works') }}</h2>
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold">{{ $t('how_it_works') }}?</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="flex flex-col items-center transform transition duration-300 ease-in-out hover:scale-105">
                     <ClientOnly>
@@ -55,23 +72,66 @@
         </div>
     </section>
 
-    <section class="bg-gradient-to-r from-vanilla-dark via-vanilla to-vanilla-light py-16">
+    <!--    one click-->
+    <section class="text-white w-full h-auto overflow-hidden py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/jungle.jpg')]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-6xl text-center text-white">One Click to Make It Happen</h2>
+        </div>
+    </section>
+
+    <section class="bg-yellow py-2"></section>
+
+
+    <!--    subscribe-->
+    <section class="bg-cover bg-center bg-no-repeat bg-[url('@/assets/old-paper-bg.jpeg')] py-16">
         <div class="container mx-auto px-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-chocolate-milk to-chocolate-dark ">
-            <h1 class="text-4xl md:text-4xl font-bold">{{ $t('landing_find_trusted_specialists') }}</h1>
-            <p class="mt-4 text-lg font-sans">{{ $t('landing_subscribe_easy') }}</p>
+            <h4 class="text-4xl md:text-8xl font-bold uppercase">{{ $t('get_started') }}</h4>
+            <p class="mt-4 text-lg max-w-1/2">{{ $t('landing_subscribe_easy') }}</p>
             <div class="mt-6">
                 <input v-model="email" type="email" :placeholder="t('your_email')" class="px-4 py-2 rounded-l-md focus:outline-none">
                 <input type="text" v-model="honeypot" class="hidden" autocomplete="off">
-                <button @click="handleSubscribe" class="bg-vanilla-orange hover:bg-vanilla-dark text-chocolate-dark px-4 py-2 rounded-r-md font-bold">
+                <button @click="handleSubscribe" class="bg-red text-white px-4 py-2 rounded-r-md font-bold">
                     {{ $t('subscribe') }}
                 </button>
             </div>
         </div>
     </section>
 
+    <!-- Description -->
+    <section class="py-16 bg-gradient-to-r from-vanilla-light to-white">
+        <div class="container mx-auto px-6 text-center">
+            <div class="grid grid-cols-3 gap-6">
+                <div>
+                    <p class="text-lg font-bold">Personal Trainers</p>
+                    <p>Boost your fitness with tailored workouts</p>
+                </div>
+                <div>
+                    <p class="text-lg font-bold">Life Coaches</p>
+                    <p>Transform your mindset and conquer challenges</p>
+                </div>
+                <div>
+                    <p class="text-lg font-bold">Language Tutors</p>
+                    <p>Expand your horizons with expert instruction</p>
+                </div>
+                <div>
+                    <p class="text-lg font-bold">Music Teachers</p>
+                    <p>Fine-tune your skills with experienced guidance</p>
+                </div>
+                <div>
+                    <p class="text-lg font-bold">Business Mentors</p>
+                    <p>Maximize your potential with professional insights</p>
+                </div>
+                <div>
+                    <p class="text-lg font-bold">Wellness Coaches</p>
+                    <p>Improve your well-being with personalized advice</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
   <!-- Teaser/Countdown Section -->
-    <section class="py-16 bg-gradient-to-r from-vanilla-dark via-vanilla to-vanilla-light">
+    <section class="py-16 bg-gradient-to-r from-white to-condo">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold">{{ $t('we_launching_soon') }}</h2>
             <p class="mt-4">{{ $t('dont_miss_out') }}</p>
@@ -80,7 +140,7 @@
     </section>
 
     <!-- Value Proposition Section -->
-    <section class="py-16 text-chocolate-dark bg-gradient-to-r from-vanilla-light to-white">
+    <section class="py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/old-paper-bg.jpg')]">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold">{{ $t('landing_why_join_us') }}</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -112,42 +172,56 @@
     </section>
 
 
-  <!--Contact section-->
-    <section class="relative w-full h-screen overflow-hidden py-16 bg-gradient-to-b from-vanilla-dark via-vanilla to-vanilla-light text-chocolate-dark" id="contact">
-<!--        <video-->
-<!--            autoplay-->
-<!--            muted-->
-<!--            loop-->
-<!--            class="absolute top-0 left-0 w-full h-full object-cover"-->
-<!--        >-->
-<!--            <source :src="videoPath" type="video/mp4" />-->
-<!--            Your browser does not support the video tag.-->
-<!--        </video>-->
+    <!--    our mission-->
+    <section class="py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/old-paper-bg.jpeg')]">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold py-5">Our mission</h2>
+            <p>
+                Our mission is to make it easy and stress-free for people to connect with the right specialists. Whether you're looking to grow your business or find the perfect professional to help you out, our platform is here to bridge the gap. With a focus on simplicity, trust, and inclusivity, we're all about creating meaningful connections that work for everyone.
+            </p>
+        </div>
+    </section>
+
+    <section class="bg-red py-2"></section>
+
+
+    <!--Contact section-->
+
+    <section class="py-16" id="contact">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-6xl font-bold">{{ t('contact_us') }}:</h2>
+        </div>
+    </section>
+
+    <section class="bg-yellow py-2"></section>
+
+    <section class="relative h-auto text-white w-full h-screen overflow-hidden py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/jungle.jpg')]">
 
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-8">{{ $t('contact_us') }}</h2>
-            <p class="text-center mb-12">{{ $t('have_questions') }}</p>
+
+            <p class="text-center mb-12 text-2xl">Have questions or need support?</p>
+            <p class="text-center mb-12 text-2xl">{{ $t('have_questions') }}</p>
 
             <div class="max-w-2xl mx-auto p-8">
                 <form @submit.prevent="handleContact" action="#" method="POST">
                     <input type="text" v-model="honeypot" class="hidden" autocomplete="off">
                     <div class="mb-6">
-                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">{{ $t('your_name') }}</label>
-                        <input v-model="nameContact" type="text" id="name" name="name" required class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none">
+                        <label for="name" class="block text-sm font-medium mb-2">{{ $t('your_name') }}</label>
+                        <input v-model="nameContact" type="text" id="name" name="name" required class="w-full text-black px-4 py-2 rounded-md shadow-sm focus:outline-none">
                     </div>
 
                     <div class="mb-6">
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-2">{{ $t('your_email') }}</label>
-                        <input v-model="emailContact" type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none">
+                        <input v-model="emailContact" type="email" id="email" name="email" required class="w-full text-black px-4 py-2 rounded-md shadow-sm focus:outline-none">
                     </div>
 
                     <div class="mb-6">
                         <label for="message" class="block text-sm font-medium text-gray-700 mb-2">{{ $t('your_message') }}</label>
-                        <textarea v-model="message" id="message" name="message" rows="5" required class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none"></textarea>
+                        <textarea v-model="message" id="message" name="message" rows="5" required class="w-full text-black px-4 py-2 rounded-md shadow-sm focus:outline-none"></textarea>
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="w-full md:w-auto bg-vanilla-orange hover:bg-vanilla-dark text-chocolate-dark px-6 py-2 rounded-md shadow-md focus:ring-2 focus:ring-offset-2">
+                        <button type="submit" class="w-full md:w-auto bg-red hover:bg-vanilla-dark text-white px-6 py-2 rounded-md shadow-md focus:ring-2 focus:ring-offset-2">
                             {{ $t('send_message') }}
                         </button>
                     </div>
@@ -175,7 +249,13 @@ const { t, locale } = useI18n();
 
 import { useHead } from '@vueuse/head';
 
-// import musicians from '~/assets/musicians.jpg'
+import musicians from '~/assets/musicians.jpg'
+import psychologist from '~/assets/psychologist.jpeg'
+import yoga from '~/assets/yoga.jpeg'
+import chess from '~/assets/chess.jpeg'
+import beauty from '~/assets/beauty.jpeg'
+import trainer from '~/assets/trainer.png'
+import teacher from '~/assets/teacher.jpeg'
 
 useHead({
     title: t('find_trusted_specialists') + ' | ' + process.env.APP_NAME,

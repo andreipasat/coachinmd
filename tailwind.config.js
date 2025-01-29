@@ -11,22 +11,36 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'custom-gif': "url('~/assets/bg.gif')", // Webpack-aware path
+        // 'custom-gif': "url('~/assets/bg.gif')", // Webpack-aware path
       },
     },
     colors: {
       white: '#FFFFFF',
-      vanilla: {
-        light: '#FFF3D1', // Warmer, buttery light vanilla
-        DEFAULT: '#FCE0A9', // Warm vanilla with a golden touch
-        dark: '#F8C978', // Deep golden vanilla
-        orange: '#FFD700'
+      black: '#000',
+      red: '#C70039',
+      yellow: '#FFC300',
+      oldPaper: {
+        light: '#F5F1E1',
+        DEFAULT: '#EDE3C9',
+        dark: '#D6CDBF',
+        edge: '#C8BBA8',
       },
       chocolate: {
         milk: '#D2691E',
         dark: '#4E2A00',
       },
-    }
+      jungle: {
+        light: '#6FBF73',   // Light Jungle Green
+        DEFAULT: '#29AB87', // Standard Jungle Green
+        dark: '#004B49',    // Deep Jungle Green
+        muted: '#3B7A57',   // Muted Jungle Green
+        condo: '#004B49'
+      },
+    },
+    gradientColorStops: (theme) => ({
+      ...theme('colors'),
+      condo: theme('colors.jungle.condo'),
+    }),
   },
   plugins: [],
 }
