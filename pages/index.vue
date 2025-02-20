@@ -1,38 +1,49 @@
 <template>
 
+    <div class="text-right text-xs bg-gradient-to-l from-oldPaper to-condo">
+        <div class="container mx-auto px-6 py-2 space-x-3 ">
+            <a class="underline" href="#how_it_works">{{ $t('how_it_works') }}</a>
+            <a class="underline" href="#why_join_us">{{ $t('landing_why_join_us') }}</a>
+            <a class="underline" href="#mission">{{ $t('our_mission') }}</a>
+            <a class="underline" href="#specialists">{{ $t('specialists') }}</a>
+            <a class="underline" href="#contact">{{ $t('contact_us') }}</a>
+        </div>
+
+    </div>
+
     <header class="bg-gradient-to-r from-oldPaper to-condo py-16 text-black">
         <div class="container mx-auto px-6 text-center ">
             <div class="flex-row md:flex md:justify-between space-y-5 md:space-y-0">
                 <div class="md:w-1/2 text-left space-y-10">
-                    <button class="w-full md:w-auto rounded-full p-2 border border-black">Achieve Your Goals</button>
+                    <a href="#subscribe" class="w-full md:w-auto rounded-full p-2 border border-black">{{ $t('achieve_your_goals') }}</a>
                     <h1 class="text-6xl text-center md:text-left md:text-8xl">
-                        Unlock <br> <span class="md:text-6xl">Your </span> <span class="text-red">TALENT</span>
+                        {{ $t('unlock') }} <br> <span class="md:text-6xl">{{ $t('your') }} </span> <span class="text-red">{{ $t('talent') }}</span>
                     </h1>
-                    <h1 class="text-2xl text-center md:text-left">and show the world your abilities!</h1>
-                    <button class="w-full md:w-auto rounded-full p-2 border border-black">Book Now</button>
+                    <h1 class="text-2xl text-center md:text-left pb-10">{{ $t('and_show_abilities') }}</h1>
+                    <a href="#subscribe" class="w-full md:w-auto rounded-full p-2 border border-black">{{ $t('book_now') }}</a>
                 </div>
                 <div class="md:w-1/2">
                     <div class="grid grid-cols-3 gap-4">
-                        <div class="col-span-2 bg-white h-[140px] rounded-bl-full rounded-tr-full border border-white">
+                        <div class="col-span-2 bg-white h-[140px] rounded-bl-full rounded-tr-full border border-black">
                             <img :src="musicians" class="w-full h-full object-cover rounded-bl-full rounded-tr-full grayscale" alt="" />
                         </div>
                         <div class="bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-tl-full border border-white">
                             <img :src="chess" class="w-full h-full object-cover rounded-bl-full rounded-tr-full rounded-tl-full grayscale" alt="" />
                         </div>
-                        <div class="bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-br-full border border-white">
+                        <div class="bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-br-full border border-black">
                             <img :src="trainer" class="w-full h-full object-cover rounded-bl-full rounded-tr-full rounded-br-full grayscale" alt="" />
                         </div>
                         <div class="bg-white h-[140px] border border-white">
                             <img :src="yoga" class="w-full h-full object-cover grayscale" alt="" />
                         </div>
-                        <div class="bg-white h-[140px] rounded-bl-full border border-white">
-                            <img :src="psychologist" class="w-full h-full object-cover rounded-bl-full grayscale" alt="" />
+                        <div class="bg-white h-[140px] rounded-bl-full border border-black">
+                            <img :src="teacher" class="w-full h-full object-cover rounded-bl-full grayscale" alt="" />
                         </div>
                         <div class="bg-white h-[140px] rounded-full border border-white">
                             <img :src="beauty" class="w-full h-full object-cover rounded-full grayscale" alt="" />
                         </div>
-                        <div class="col-span-2 bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-tl-full border border-white">
-                            <img :src="teacher" class="w-full h-full object-cover rounded-full grayscale" alt="" />
+                        <div class="col-span-2 bg-white h-[140px] rounded-bl-full rounded-tr-full rounded-tl-full border border-black">
+                            <img :src="psychologist" class="w-full h-full object-cover rounded-full grayscale" alt="" />
                         </div>
                     </div>
                 </div>
@@ -43,7 +54,7 @@
     <section class="bg-black py-2"></section>
 
     <!-- How It Works Section -->
-    <section class="py-16 bg-gradient-to-r from-vanilla-light to-white">
+    <section class="py-16 bg-gradient-to-r from-vanilla-light to-white" id="how_it_works">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold">{{ $t('how_it_works') }}?</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -75,7 +86,7 @@
     <!--    one click-->
     <section class="text-white w-full h-auto overflow-hidden py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/jungle.jpg')]">
         <div class="container mx-auto px-6">
-            <h2 class="text-6xl text-center text-white">One Click to Make It Happen</h2>
+            <h2 class="text-6xl text-center text-white">{{ $t('one_click_to_make_it_happen') }}</h2>
         </div>
     </section>
 
@@ -83,14 +94,14 @@
 
 
     <!--    subscribe-->
-    <section class="bg-cover bg-center bg-no-repeat bg-[url('@/assets/old-paper-bg.jpeg')] py-16">
+    <section class="bg-cover bg-center bg-no-repeat bg-[url('@/assets/old-paper-bg.jpeg')] py-16" id="subscribe">
         <div class="container mx-auto px-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-chocolate-milk to-chocolate-dark ">
             <h4 class="text-4xl md:text-8xl font-bold uppercase">{{ $t('get_started') }}</h4>
             <p class="mt-4 text-lg max-w-1/2">{{ $t('landing_subscribe_easy') }}</p>
             <div class="mt-6">
                 <input v-model="email" type="email" :placeholder="t('your_email')" class="px-4 py-2 rounded-l-md focus:outline-none">
                 <input type="text" v-model="honeypot" class="hidden" autocomplete="off">
-                <button @click="handleSubscribe" class="bg-red text-white px-4 py-2 rounded-r-md font-bold">
+                <button @click="handleSubscribe" class="bg-red hover:bg-chocolate-milk text-white px-4 py-2 rounded-r-md font-bold">
                     {{ $t('subscribe') }}
                 </button>
             </div>
@@ -98,32 +109,32 @@
     </section>
 
     <!-- Description -->
-    <section class="py-16 bg-gradient-to-r from-vanilla-light to-white">
+    <section class="py-16 bg-gradient-to-r from-vanilla-light to-white" id="specialists">
         <div class="container mx-auto px-6 text-center">
             <div class="grid grid-cols-3 gap-6">
-                <div>
-                    <p class="text-lg font-bold">Personal Trainers</p>
-                    <p>Boost your fitness with tailored workouts</p>
+                <div class="transform transition duration-300 ease-in-out hover:scale-105">
+                    <p class="text-lg font-bold">{{ t('personal_trainers') }}</p>
+                    <p>{{ $t('boost_your_fitness') }}</p>
                 </div>
-                <div>
-                    <p class="text-lg font-bold">Life Coaches</p>
-                    <p>Transform your mindset and conquer challenges</p>
+                <div class="transform transition duration-300 ease-in-out hover:scale-105">
+                    <p class="text-lg font-bold">{{ $t('life_coaches') }}</p>
+                    <p>{{ $t('transform_your_mindset') }}</p>
                 </div>
-                <div>
-                    <p class="text-lg font-bold">Language Tutors</p>
-                    <p>Expand your horizons with expert instruction</p>
+                <div class="transform transition duration-300 ease-in-out hover:scale-105">
+                    <p class="text-lg font-bold">{{ $t('language_tutors') }}</p>
+                    <p>{{ $t('expand_your_horizons') }}</p>
                 </div>
-                <div>
-                    <p class="text-lg font-bold">Music Teachers</p>
-                    <p>Fine-tune your skills with experienced guidance</p>
+                <div class="transform transition duration-300 ease-in-out hover:scale-105">
+                    <p class="text-lg font-bold">{{ $t('music_teachers') }}</p>
+                    <p>{{ $t('fine_tyne_skills') }}</p>
                 </div>
-                <div>
-                    <p class="text-lg font-bold">Business Mentors</p>
-                    <p>Maximize your potential with professional insights</p>
+                <div class="transform transition duration-300 ease-in-out hover:scale-105">
+                    <p class="text-lg font-bold">{{ $t('business_mentors') }}</p>
+                    <p>{{ $t('maximize_your_potential') }}</p>
                 </div>
-                <div>
-                    <p class="text-lg font-bold">Wellness Coaches</p>
-                    <p>Improve your well-being with personalized advice</p>
+                <div class="transform transition duration-300 ease-in-out hover:scale-105">
+                    <p class="text-lg font-bold">{{ $t('wellness_coaches') }}</p>
+                    <p>{{ $t('improve_your_well_being') }}</p>
                 </div>
             </div>
         </div>
@@ -140,7 +151,7 @@
     </section>
 
     <!-- Value Proposition Section -->
-    <section class="py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/old-paper-bg.jpg')]">
+    <section class="py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/old-paper-bg.jpg')]" id="why_join_us">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold">{{ $t('landing_why_join_us') }}</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -173,11 +184,11 @@
 
 
     <!--    our mission-->
-    <section class="py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/old-paper-bg.jpeg')]">
+    <section class="py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/old-paper-bg.jpeg')]" id="mission">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold py-5">Our mission</h2>
             <p>
-                Our mission is to make it easy and stress-free for people to connect with the right specialists. Whether you're looking to grow your business or find the perfect professional to help you out, our platform is here to bridge the gap. With a focus on simplicity, trust, and inclusivity, we're all about creating meaningful connections that work for everyone.
+                {{ $t('our_mission_description') }}
             </p>
         </div>
     </section>
@@ -199,7 +210,7 @@
 
         <div class="container mx-auto px-6">
 
-            <p class="text-center mb-12 text-2xl">Have questions or need support?</p>
+            <p class="text-center mb-12 text-2xl">{{ $t('have_questions_or_support') }}</p>
             <p class="text-center mb-12 text-2xl">{{ $t('have_questions') }}</p>
 
             <div class="max-w-2xl mx-auto p-8">
@@ -221,7 +232,7 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="w-full md:w-auto bg-red hover:bg-vanilla-dark text-white px-6 py-2 rounded-md shadow-md focus:ring-2 focus:ring-offset-2">
+                        <button type="submit" class="w-full md:w-auto bg-red hover:bg-chocolate-milk text-white px-6 py-2 rounded-md shadow-md focus:ring-2 focus:ring-offset-2">
                             {{ $t('send_message') }}
                         </button>
                     </div>
