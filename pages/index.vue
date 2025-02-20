@@ -151,7 +151,7 @@
     </section>
 
     <!-- Value Proposition Section -->
-    <section class="py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/old-paper-bg.jpg')]" id="why_join_us">
+    <section class="py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/old-paper-bg.jpeg')]" id="why_join_us">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold">{{ $t('landing_why_join_us') }}</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
