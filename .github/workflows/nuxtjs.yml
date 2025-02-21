@@ -45,10 +45,9 @@ jobs:
       - name: Extract and restart app on server
         run: |
           ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "
-            cd /home &&
             tar -xzf nuxt-output.tar.gz &&
-            rm -rf /home/nuxt-output &&
-            mv .output /home/nuxt-output &&
+            rm -rf nuxt-output &&
+            mv .output nuxt-output &&
             rm nuxt-output.tar.gz &&
-            pm2 describe nuxt > /dev/null && pm2 reload nuxt || pm2 start /home/nuxt-output/server/index.mjs --name 'nuxt'
+            pm2 describe nuxt > /dev/null && pm2 reload nuxt || pm2 start nuxt-output/server/index.mjs --name 'nuxt'
           "
