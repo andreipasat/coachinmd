@@ -14,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Install Node and Build Nuxt
+      # Step 2: Install Dependencies and Build
       - name: Install dependencies and build
         run: |
           curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
@@ -23,7 +23,7 @@ jobs:
           npx nuxt prepare
           npm run build
 
-      # Step 3: Archive .output Folder
+      # Step 3: Archive Build Folder
       - name: Archive .output folder
         run: tar -czf nuxt-output.tar.gz .output
 
@@ -34,20 +34,19 @@ jobs:
           echo "${{ secrets.DROPLET_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.DROPLET_IP }} >> ~/.ssh/known_hosts
+      
+      #      - name: Give rights
+      #        run: sudo chown -R ${{ secrets.DROPLET_USER }}:${{ secrets.DROPLET_USER }} /home/${{ secrets.DROPLET_USER }}
+      # Step 5: Copy Build Archive to Server
+      - name: Copy archive to server
+        run: scp nuxt-output.tar.gz ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/${{ secrets.DROPLET_USER }}/
 
-      # Step 5: Upload Archive to Server
-      - name: Copy build archive to server
-        run: |
-          ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "sudo mkdir -p /var/www/nuxt && sudo chown -R $USER:$USER /var/www/nuxt"
-          scp nuxt-output.tar.gz ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/nuxt/nuxt-output.tar.gz
-
-      # Step 6: Extract and Restart Nuxt App
+      # Step 6: Extract Build and Restart App on Server
       - name: Extract and restart app on server
         run: |
           ssh ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "
-            cd /var/www/nuxt &&
-            rm -rf .output &&
             tar -xzf nuxt-output.tar.gz &&
+            rm -rf nuxt-output &&
             mv .output nuxt-output &&
             rm nuxt-output.tar.gz &&
             pm2 describe nuxt > /dev/null && pm2 reload nuxt || pm2 start 'npx nuxt start --port 3000 --hostname 0.0.0.0' --name nuxt
