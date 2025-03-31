@@ -16,7 +16,7 @@ jobs:
 
       - name: Debug SSH user
         run: |
-          echo "${{ secrets.DROPLET_USER }}"
+          echo ${{ secrets.DROPLET_USER }}
 
       # Step 2: Install Dependencies and Build
       - name: Install dependencies and build
