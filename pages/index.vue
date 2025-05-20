@@ -183,7 +183,7 @@
 
 
     <!--    our mission-->
-    <section class="py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/old-paper-bg.jpeg')]" id="mission">
+    <section class="py-16 bg-gradient-to-r from-white to-condo" id="mission">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold py-5">Our mission</h2>
             <p>
