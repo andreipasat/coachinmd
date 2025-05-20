@@ -62,20 +62,6 @@ export default defineNuxtConfig({
       ],
     }
   },
-  // googleFonts: {
-  //   families: {
-  //     'Playfair+Display': {
-  //       wght: [400, 500, 700], // Weights for Playfair Display
-  //     },
-  //     Lato: {
-  //       wght: [300, 400, 700], // Weights for Lato
-  //     },
-  //   },
-  //   display: 'swap', // Use swap display for better performance
-  //   prefetch: true, // Optional: Enable prefetching of fonts
-  //   preload: true, // Optional: Preload fonts for faster loading
-  //   download: true, // Optional: Self-host fonts
-  // },
   pages: true,
   sitemap: {
     hostname: 'coachinmd.com',

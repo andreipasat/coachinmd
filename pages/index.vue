@@ -8,7 +8,6 @@
             <a class="underline" href="#specialists">{{ $t('specialists') }}</a>
             <a class="underline" href="#contact">{{ $t('contact_us') }}</a>
         </div>
-
     </div>
 
     <header class="bg-gradient-to-r from-oldPaper to-condo py-16 text-black">
