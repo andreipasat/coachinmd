@@ -6,6 +6,7 @@
 <script setup>
 import { useHead } from '@unhead/vue'; // Updated for compatibility with Nuxt 3
 
+
 useHead({
     script: [
         {

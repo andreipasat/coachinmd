@@ -267,6 +267,10 @@ import beauty from '~/assets/beauty.jpeg'
 import trainer from '~/assets/trainer.png'
 import teacher from '~/assets/teacher.jpeg'
 
+definePageMeta({
+  middleware: ['locale']
+})
+
 useHead({
     title: t('find_trusted_specialists') + ' | ' + process.env.APP_NAME,
     meta: [

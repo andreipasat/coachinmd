@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   ssr: true,
   nitro: {
-    preset: 'vercel', // Ensure server is set correctly
+    preset: 'node', // Ensure server is set correctly
   },
   target: 'static',
   build: {
@@ -44,23 +44,7 @@ export default defineNuxtConfig({
     '@vesp/nuxt-fontawesome',
     '@nuxtjs/sitemap',
       '@nuxtjs/google-fonts',
-      '@nuxtjs/i18n'
   ],
-  i18n: {
-    lazy: true,
-    langDir: 'i18n/locales/',
-    defaultLocale: 'ro',
-    locales: [
-      { code: 'en', name: 'English', file: 'en.json' },
-      { code: 'ro', name: 'Română', file: 'ro.json' },
-      { code: 'ru', name: 'Русский', file: 'ru.json' },
-    ],
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      fallbackLocale: 'ro'
-    }
-  },
   toastify: {
     autoClose: 2000,
     position: 'top-right',

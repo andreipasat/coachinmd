@@ -31,7 +31,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         legacy: false,
         globalInjection: true,
         locale: getInitialLocale(), // Initial locale
-        fallbackLocale: 'en',
+        fallbackLocale: 'ro',
         messages, // All translations
     });
 
