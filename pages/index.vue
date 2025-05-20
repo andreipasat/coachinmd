@@ -205,14 +205,14 @@
 
     <section class="bg-yellow py-2"></section>
 
-    <section class="relative h-auto text-white w-full h-screen overflow-hidden py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/jungle.jpg')]">
+    <section class="relative h-auto text-white w-full overflow-hidden py-16 bg-cover bg-center bg-no-repeat bg-[url('@/assets/jungle.jpg')]">
 
         <div class="container mx-auto px-6">
 
             <p class="text-center mb-12 text-2xl">{{ $t('have_questions_or_support') }}</p>
             <p class="text-center mb-12 text-2xl">{{ $t('have_questions') }}</p>
 
-            <div class="max-w-2xl mx-auto p-8">
+            <div class="max-w-2xl mx-auto p-8 my-2">
                 <form @submit.prevent="handleContact" action="#" method="POST">
                     <input type="text" v-model="honeypot" class="hidden" autocomplete="off">
                     <div class="mb-6">
