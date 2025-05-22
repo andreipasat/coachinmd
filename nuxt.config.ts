@@ -35,7 +35,9 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      baseURL: 'coachinmd.com' || 'http://localhost:3000', // Default value
+      baseURL: 'coachinmd.com', // Default value
+      supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL,
+      supabaseKey: process.env.NUXT_PUBLIC_SUPABASE_KEY
     },
   },
 

@@ -318,7 +318,8 @@ watch(() => emailContact.value, (newEmail) => {
 }, {immediate: true})
 
 import { useNuxtApp } from "#app";
-const { $axios } = useNuxtApp();
+const { $axios, $supabase } = useNuxtApp();
+const errorSubscribeKey = ref('');
 
 async function handleSubscribe() {
     if (honeypot.value.length) {
@@ -327,31 +328,31 @@ async function handleSubscribe() {
     isEmail.value = useValidation().isEmail(email.value)
     if (isEmail.value) {
         try {
-            const response = await $axios.post('/api/subscriber', {
-                email:email.value,
-            })
-            if (response.status === 201) {
-                useToastify(t('subscribed_with_success'), {
-                    autoClose: 1000,
-                    position: ToastifyOption.POSITION.TOP_RIGHT,
-                    type: "success"
-                });
-                email.value = ''
+              const { data, error } = await $supabase
+              .from('subscriptions')
+              .insert([{ email: email.value }])
+          
+          if (error) {
+            if (error.code === '23505') {
+              errorSubscribeKey.value = 'email_already_registered'
+            } else {
+              errorSubscribeKey.value = 'error_try_again'
             }
+            useToastify(t(errorSubscribeKey.value), {
+              autoClose: 1000,
+              position: ToastifyOption.POSITION.TOP_RIGHT,
+              type: "error"
+            });
+          } else {
+            useToastify(t('subscribed_with_success'), {
+              autoClose: 1000,
+              position: ToastifyOption.POSITION.TOP_RIGHT,
+              type: "success"
+            });
+            email.value = ''
+          }
+          
         } catch (error) {
-            if (error.status === 422) {
-                if (error.response
-                    && error.response.data
-                    && error.response.data.errors
-                    && error.response.data.errors.email
-                ) {
-                    useToastify(t('email_has_been_taken'), {
-                        autoClose: 1000,
-                        position: ToastifyOption.POSITION.TOP_RIGHT,
-                        type: "error"
-                    });
-                }
-            }
             console.log('err',error)
         }
     } else {
@@ -371,35 +372,35 @@ async function handleContact() {
     isEmailContact.value = useValidation().isEmail(emailContact.value)
     if (isEmailContact.value) {
         try {
-            const response = await $axios.post('/api/contact', {
-                name: nameContact.value,
-                email:emailContact.value,
-                message: message.value
+            const { data, error } = await $supabase
+                .from('contacts')
+                .insert([{ email: emailContact.value, name:  nameContact.value, message: message.value}])
+          if (error) {
+            if (error.code === '23505') {
+              errorSubscribeKey.value = 'email_already_registered'
+            } else {
+              errorSubscribeKey.value = 'error_try_again'
+            }
+            useToastify(t(errorSubscribeKey.value), {
+              autoClose: 1000,
+              position: ToastifyOption.POSITION.TOP_RIGHT,
+              type: "error"
+            });
+          } else {
+            useToastify(t('subscribed_with_success'), {
+              autoClose: 1000,
+              position: ToastifyOption.POSITION.TOP_RIGHT,
+              type: "success"
+            });
+            emailContact.value = ''
+            nameContact.value = ''
+            message.value = ''
+            await $fetch('/api/send-email', {
+              method: 'POST',
+              body: { email: emailContact.value }
             })
-            if (response.status === 200) {
-                useToastify(t('message_send_with_success'), {
-                    autoClose: 1000,
-                    position: ToastifyOption.POSITION.TOP_RIGHT,
-                    type: "success"
-                });
-                emailContact.value = ''
-                nameContact.value = ''
-                message.value = ''
-            }
+          }
         } catch (error) {
-            if (error.status === 422) {
-                if (error.response
-                    && error.response.data
-                    && error.response.data.errors
-                    && error.response.data.errors.email
-                ) {
-                    useToastify(t('check_fields'), {
-                        autoClose: 1000,
-                        position: ToastifyOption.POSITION.TOP_RIGHT,
-                        type: "error"
-                    });
-                }
-            }
             console.log('error',error)
         }
     } else {
