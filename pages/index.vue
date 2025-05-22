@@ -185,7 +185,7 @@
     <!--    our mission-->
     <section class="py-16 bg-gradient-to-r from-white to-condo" id="mission">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold py-5">Our mission</h2>
+            <h2 class="text-3xl font-bold py-5">{{ $t('our_mission') }}</h2>
             <p>
                 {{ $t('our_mission_description') }}
             </p>
