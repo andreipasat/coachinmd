@@ -142,7 +142,7 @@
 <!--  specialist register section-->
   <section class="bg-cover bg-center bg-no-repeat bg-[url('@/assets/sunset-office.jpg')] py-16" id="join_as_specialist">
     <div class="container mx-auto px-6 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">{{ $t('specialist_join_title') }}</h2>
+      <h2 class="text-4xl md:text-5xl p-3 rounded-lg bg-jungle-condo bg-opacity-70 font-bold mb-6 text-white">{{ $t('specialist_join_title') }}</h2>
       
       <div class="bg-chocolate-milk bg-opacity-70 p-3 rounded-lg shadow-lg mx-auto mb-5">
         <p class="text-lg md:text-xl mx-auto mb-10 text-white">
